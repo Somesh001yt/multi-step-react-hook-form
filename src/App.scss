@@ -1,0 +1,20 @@
+
+.app{
+    background-color: #f7f7f7;
+}
+
+.container{
+    display: flex;
+   
+  } 
+  
+  
+   .menuContainer{
+    flex: 0.2;
+  } 
+  
+  .contentContainer{
+    width: 100%;
+     flex: 0.8;
+  }
+  

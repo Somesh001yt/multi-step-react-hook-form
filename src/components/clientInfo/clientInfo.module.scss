@@ -1,0 +1,91 @@
+.warning {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  margin-bottom: 1rem;
+
+  .paragraph {
+    color: var(--Typography-Dark-DarkSecondary, #959e93);
+    font-family: "Switzer", sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+
+.shipTitle {
+  color: var(--Typography-Light-Light-Primary, #19201a);
+  font-family: "Switzer", sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.checkBox {
+  display: flex;
+  gap: 10px;
+  margin: 1rem 0;
+
+  .text {
+    color: var(--Typography-Light-Light-Secondary, #4b5a4c);
+    font-family: "Switzer", sans-serif;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.firstDiv {
+  display: flex;
+  gap: 30px;
+
+  .totalDiv {
+    width: 40%;
+    border-radius: 1rem;
+    border: 1px solid var(--Divider-primary, hsl(0, 0%, 87%));
+    background: var(--BG-Light-Elevation-1, #f1f1f1);
+    height: 3.1rem;
+    margin-top: 1.5rem;
+    display: flex;
+    border-bottom: 1px solid var(--Divider-primary, #e3e3e3);
+    gap: 1px;
+    margin-bottom: 1rem;
+
+    .imgIcon {
+      width: 1.5rem;
+      height: 1.5rem;
+      object-fit: contain;
+      padding: 10px;
+    }
+
+    .details {
+      margin-top: 6px;
+
+      .total {
+        color: var(--Typography-Light-Light-Primary, #19201a);
+        font-family: "Switzer", sans-serif;
+        font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+
+      .value {
+        color: var(--Typography-Light-Light-Primary, #19201a);
+        text-align: center;
+        font-family: "Switzer", sans-serif;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+    }
+  }
+}

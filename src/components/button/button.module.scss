@@ -1,0 +1,35 @@
+.btn {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  box-shadow: none;
+  font-weight: 600;
+  transition: 0.3s;
+  background-color: transparent;
+  font-size: 16px;
+  color: #19201a;
+  &.disabled {
+    opacity: 0.5;
+  }
+  &.btnOutline {
+    padding: 0 22px;
+    line-height: 40px;
+    border-radius: 32px;
+    border: 1px solid #19201a;
+    // height: 3.25rem;
+  }
+  &.btnPrimary {
+    padding: 0 22px;
+    line-height: 40px;
+    border-radius: 22px;
+    background-color: #90d566;
+    color: #19201a;
+    font-weight: 500;
+    height: 3.25rem;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+}
