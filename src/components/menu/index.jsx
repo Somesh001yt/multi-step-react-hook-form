@@ -6,7 +6,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import Logo from '../../assests/menuIcons/logo.png'
 
-const MenuComponent = () => {
+const MenuComponent =({ show, toggleMenu }) => {
+
+  console.log(show)
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -18,7 +20,7 @@ const MenuComponent = () => {
 
 
   return (
-    <div className={styles.menu}>
+    <div className={`${styles.menu} ${show ? styles.open : ""}`}>
       <div className={styles.menuList}>
         <div className={styles.header}>
           <img className={styles.image} src={Logo} alt="logo" />

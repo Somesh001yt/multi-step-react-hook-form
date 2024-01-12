@@ -5,6 +5,12 @@
 
 .container{
     display: flex;
+
+    @media (max-width :'1150px') {
+      margin: 0 auto;
+      display: block;
+      width: 90%;   
+    }
    
   } 
   
@@ -18,3 +24,4 @@
      flex: 0.8;
   }
   
+

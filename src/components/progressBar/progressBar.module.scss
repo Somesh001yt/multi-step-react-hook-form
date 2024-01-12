@@ -1,0 +1,32 @@
+.indexedStep {
+    color: rgb(190, 190, 190);
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.accomplished {
+    background-color: #90D566;
+    color: white;
+    border-style: none;
+}
+
+
+  
+
+@media screen and (max-width: 480px) {
+    .indexedStep {
+        width: 15px;
+        height: 15px;
+        font-size: 6px;
+    }
+}

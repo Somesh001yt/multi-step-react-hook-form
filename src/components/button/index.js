@@ -10,6 +10,7 @@ const ButtonBox = (props) => {
           type={props.type ? props.type : "button"}
           disabled={ props.loader}
           onClick={props?.click}
+          style={props?.style}
           className={`${styles.btn} ${
             props?.primary ? styles.btnPrimary : styles.btnOutline
           } ${props?.class} ${props.disabled && styles.disabled}`}

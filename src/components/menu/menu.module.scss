@@ -79,3 +79,24 @@
    
   }
 }
+
+
+
+@media (max-width: 1140px) {
+  .menu{
+   
+   left: -400px;
+   transition: 400ms ease-out;
+   z-index: 999;
+   position: fixed;
+  
+   &.open{
+  left: 0%;
+    z-index: 99;
+    transition: 300ms ease;
+ 
+
+  }
+}
+  
+}

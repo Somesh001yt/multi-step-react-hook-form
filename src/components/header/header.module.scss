@@ -1,0 +1,119 @@
+.headers {
+    display: flex;
+     margin-top: 3rem;
+     margin-left: 2rem;
+    justify-content: space-between;
+
+
+    @media (max-width:'1200px') {
+      margin-top: 2rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+
+    @media (max-width:'800px') {
+      margin-top: 1rem;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .headingDiv{
+       display: flex;
+       gap: 3rem;
+
+       @media (max-width:'1200px') {
+       gap: 2rem;
+      }
+
+       @media (max-width:'900px') {
+       gap: 1rem;
+      }
+
+
+        .imageDiv {
+            background-color: #f8f8f8;
+            width: 51px;
+            height: 50px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+      
+            img {
+              object-fit: contain;
+            }
+          }
+      
+          .title {
+            color: var(--Typography-Light-Light-Primary, #19201a);
+            font-size: 3rem;
+            font-family: 'Switzer', sans-serif;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+
+
+            @media (max-width: '1200px') {
+              font-size: 2rem;
+              margin-top: 12px;
+            }
+
+            @media (max-width: '800px') {
+              font-size: 1.5rem;
+              margin-top: 12px;
+            }
+          }
+
+    }
+
+    .imageDiv{
+     display: none;
+
+     @media (max-width:"1200px") {
+      display: block;
+     }
+    
+
+
+    .hexagon {
+        height: 56px;
+        width: 32.64px;
+        box-sizing: border-box;
+        background: #f8f8f8;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 1%;
+        border: 1px solid hsl(0, 0%, 97%);
+        transition: 0.3s all;
+        
+      
+       
+      
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          height: 0;
+          width: 0;
+          top: 0;
+          border-top: 28px solid transparent;
+          border-bottom: 28px solid transparent;
+        }
+      
+        &::before {
+          left: -17.32px;
+          border-right: 17.32px solid #f8f8f8;
+        }
+      
+        &::after {
+          right: -17.32px;
+          border-left: 17.32px solid #f8f8f8;
+        }
+
+        
+      }
+    } 
+  }
+

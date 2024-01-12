@@ -37,5 +37,21 @@
     border-radius: 20px;
     padding-left: 2.5rem;
     }
+
+    input[type="time"]{
+    display: flex;
+    flex-flow: row-reverse;
+    font-size: 1.2rem;
+    gap: 15px;
+    object-fit: contain;
+    padding: 10px;
+    margin-right: 20px;
+    height: 2rem;
+  }
+
+    .currencySymbol{
+      position: relative;
+      right: 20%;
+    }
   }
 }

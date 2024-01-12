@@ -1,33 +1,79 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../inputBox";
 import styles from "./clientInfo.module.scss";
 
-  
 import Location from "../../assests/marker-pin-01.svg";
 import Telephone from "../../assests/phone.png";
 import Warning from "../../assests/info-hexagon.svg";
 import Address from "../../assests/mail-02.svg";
-import Currency from "../../assests/currency-euro.svg"
-import Time from "../../assests/clock.svg"
-import Route  from "../../assests/route.svg"
-import Percent from "../../assests/percent-03.svg"
+import Building from "../../assests/building-07.svg";
+import Currency from "../../assests/currency-euro.svg";
+import Time from "../../assests/clock.svg";
+import Route from "../../assests/route.svg";
+import Percent from "../../assests/percent-03.svg";
+import User from "../../assests/user-01.svg";
 
 import TimerInput from "../inputMask";
+import { useWatch } from "react-hook-form";
+
+const ClientInfo = ({ control , watch, setValue , getValue}) => {
+
+  const [totalOre, setTotalOre] = useState(0);
+  const [totalKm, setTotalKm] = useState(0);
+  const [totalOreAndKm, setTotalOreAndKm] = useState(0);
 
 
-const ClientInfo = ({ control }) => {
+   const oreValue = watch("ore", 0);
+   const importoValue = watch("importo", 0);
+   const kmValue = watch("km", 0);
+   const costKmValue = watch("costo", 0);
+   const TotalOreValue = watch("totalOre", 0);
+   const TotalKmValue = watch("totalKm", 0);
+
+   const calculatedTotalOreAndKm = () => {
+    const calculatedTotalOreKm = TotalOreValue + TotalKmValue;
+    setTotalOreAndKm(calculatedTotalOreKm)
+    setValue("totale", calculatedTotalOreKm);
+   }
+
+   const calculatedFinalKm = () => {
+    const calculatedTotalKm = kmValue * costKmValue;
+    setTotalKm(calculatedTotalKm);
+    setValue("totalKm", calculatedTotalKm);
+   }
 
 
+  const calculateTotalOre = () => {
+    const calculatedTotalOre = oreValue * importoValue;
+    setTotalOre(calculatedTotalOre);
+    setValue("totalOre", calculatedTotalOre);
+  };
+
+  
+  useEffect(() => {
+    calculateTotalOre();
+  }, [oreValue, importoValue]);
+  
+  useEffect(() => {
+    calculatedFinalKm();
+  }, [kmValue, costKmValue]);
+  
+  useEffect(() => {
+    calculatedTotalOreAndKm();
+  }, [TotalOreValue, TotalKmValue]);
+    
+ 
   return (
     <div>
       <div style={{ marginTop: "1rem" }}>
         <Input
+          src={Building}
           label="Ditta — Ragione sociale"
           type="text"
           required={true}
-          name="date"
+          name="companyName"
           control={control}
-          placeholder={"Select your date"}
+          placeholder={"Enter Your Company Name"}
         />
       </div>
 
@@ -43,9 +89,9 @@ const ClientInfo = ({ control }) => {
         src={Location}
         type="text"
         required={true}
-        name="location  "
+        name="clientAddress"
         control={control}
-        placeholder={"Select your date"}
+        placeholder={"Enter Client Address"}
       />
       <Input
         label="Telefono"
@@ -54,7 +100,7 @@ const ClientInfo = ({ control }) => {
         required={true}
         name="telephone"
         control={control}
-        placeholder={"Enter your telephone"}
+        placeholder={"Enter your Contact Number"}
       />
       <Input
         src={Address}
@@ -63,19 +109,19 @@ const ClientInfo = ({ control }) => {
         required={true}
         name="email"
         control={control}
-        placeholder={"Enter your Email"}
+        placeholder={"Enter Your Email Address"}
       />
 
       <h6 className={styles.shipTitle}>Shipping info</h6>
 
       <Input
-        src={Address}
+        src={User}
         label="Contact Person"
         type="text"
         required={true}
         name="contactPerson"
         control={control}
-        placeholder={"Enter your Email"}
+        placeholder={"Enter Contact Person Name"}
       />
       <Input
         src={Telephone}
@@ -84,7 +130,7 @@ const ClientInfo = ({ control }) => {
         required={true}
         name="contactNumber"
         control={control}
-        placeholder={"Enter your Email"}
+        placeholder={"Enter Contact Person Phone Number"}
       />
       <Input
         src={Address}
@@ -93,94 +139,99 @@ const ClientInfo = ({ control }) => {
         required={true}
         name="contactEmail"
         control={control}
-        placeholder={"Enter your Email"}
+        placeholder={"Enter Contact Person Email Address"}
       />
       <Input
         src={Location}
         label="Place of collection"
         type="text"
         required={true}
-        name="collection"
+        name="contactLocation"
         control={control}
-        placeholder={"Enter your Email"}
+        placeholder={"Enter Contact Persom Loaction"}
       />
 
       <div className={styles.checkBox}>
-        <input type="checkbox"/>
+        <input type="checkbox" />
         <p className={styles.text}>Apply Minimum Order</p>
       </div>
 
       <div className={styles.firstDiv}>
-      <TimerInput
-        src={Time}
-        label={"ORE"}
-        type={'number'}
-        name={'ore'}
-        control={control}
-      />
-      <TimerInput
-        src={Currency}
-        label={"IMPORTO"}
-        type={"number"}
-        name={'importo'}
-        step={0.01}
-        control={control}
-      />
-      <div className={styles.totalDiv}>
-        <img className={styles.imgIcon} src={Currency}/>
-        <div className={styles.details}>
-          <p className={styles.total}>TOTALE</p>
-          <span className={styles.value}>40.00</span>
+        <TimerInput
+          src={Time}
+          label={"ORE"}
+          type={"number"}
+          name={"ore"}
+          control={control}
+          handleChange={calculateTotalOre}
+        />
+        <TimerInput
+          src={Currency}
+          label={"IMPORTO"}
+          type={"number"}
+          name={"importo"}
+          step={0.01}
+          control={control}
+          handleChange={calculateTotalOre}
+        />
+        <div className={styles.totalDiv}>
+          <TimerInput
+            src={Currency}
+            type={"number"}
+            name={"totalOre"}
+            control={control}
+            
+            value={totalOre}
+            readOnly
+          />
         </div>
       </div>
-
-      </div>
       <div className={styles.firstDiv}>
-      <TimerInput
-        src={Route}
-        label={"KM"}
-        type={'number'}
-        name={'km'}
-        control={control}
-      />
-      <TimerInput
-        src={Currency}
-        label={"COSTP PER KM"}
-        type={"number"}
-        name={'costo'}
-        step={0.01}
-        control={control}
-      />
-      <div className={styles.totalDiv}>
-        <img className={styles.imgIcon} src={Currency}/>
-        <div className={styles.details}>
-          <p className={styles.total}>TOTALE</p>
-          <span className={styles.value}>183.00</span>
+        <TimerInput
+          src={Route}
+          label={"KM"}
+          type={"number"}
+          name={"km"}
+          control={control}
+        />
+        <TimerInput
+          src={Currency}
+          label={"COSTP PER KM"}
+          type={"number"}
+          name={"costo"}
+          step={0.01}
+          control={control}
+        />
+        <div className={styles.totalDiv}>
+          <TimerInput
+            src={Currency}
+            type={"number"}
+            name={"totalKm"}
+            control={control}
+            value={totalKm}
+            readOnly
+            // showCurrencyMask={true}
+          />
         </div>
       </div>
-
-      </div>
       <div className={styles.firstDiv}>
-      <TimerInput
-        src={Percent}
-        label={"MULTIPLIER"}
-        type={'number'}
-        name={'multiplier'}
-        control={control}
-      />
-      <TimerInput
-        src={Currency}
-        label={"TOTALE(ORE + KM)"}
-        type={"number"}
-        name={'totale'}
-        step={0.01}
-        control={control}
-      />
-     
-
+        <TimerInput
+          src={Percent}
+          label={"MULTIPLIER"}
+          type={"number"}
+          name={"multiplier"}
+          control={control}
+        />
+        <TimerInput
+          src={Currency}
+          label={"TOTALE(ORE + KM)"}
+          type={"number"}
+          name={"totale"}
+          step={0.01}
+          value={totalOreAndKm}
+          control={control}
+        />
       </div>
-
-    
     </div>
   );
 };
